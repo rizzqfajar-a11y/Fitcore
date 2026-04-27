@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>FITCORE — Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* GLOBAL */
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#0b0f14;
+  color:#fff;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.logo img{
+  height:35px;
+  border-radius:50%;
+  border:2px solid #00ffae;
+}
+
+.menu a{
+  color:#ccc;
+  text-decoration:none;
+  margin-left:15px;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  color:#00ffae;
+}
+
+/* SPACING */
+.header-space{
+  height:90px;
+}
+
+/* SECTION */
+section{
+  padding:70px 0;
+  text-align:center;
+}
+
+h2{
+  color:#00ffae;
+}
+
+/* CALCULATOR */
+.calculator{
+  background:#111;
+  padding:30px;
+  border-radius:16px;
+  max-width:380px;
+  margin:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.calculator input,
+.calculator select{
+  display:block;
+  margin:12px auto;
+  padding:12px;
+  width:100%;
+  border-radius:10px;
+  border:none;
+  background:#1c1c1c;
+  color:#fff;
+}
+
+.calculator button{
+  padding:12px 20px;
+  background:linear-gradient(45deg,#00ffae,#00cfff);
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  color:#000;
+  font-weight:600;
+}
+
+#result{
+  margin-top:15px;
+  color:#00ffae;
+}
+
+/* ABOUT */
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+
+.about img{
+  width:100%;
+  border-radius:16px;
+}
+
+/* SOCIAL */
+.social{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:45px;
+  height:45px;
+  margin-right:10px;
+  border-radius:50%;
+  background:#111;
+  color:#00ffae;
+  font-size:20px;
+  transition:0.3s;
+  text-decoration:none;
+}
+
+.social:hover{
+  background:#00ffae;
+  color:#000;
+  transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#050505;
+  color:#aaa;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .about{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <img src="logo.png">
+      <span>FITCORE</span>
+    </div>
+
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="#latihan">Workout</a>
+      <a href="tools.html">Tools</a>
+      <a href="#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-space"></div>
+
+<div class="container">
+
+<!-- TOOLS -->
+<section id="latihan">
+  <h2>Calorie Calculator</h2>
+
+  <div class="calculator">
+    <input type="number" id="weight" placeholder="Berat badan (kg)">
+    <input type="number" id="height" placeholder="Tinggi badan (cm)">
+    <input type="number" id="age" placeholder="Umur">
+    
+    <select id="gender">
+      <option value="male">Laki-laki</option>
+      <option value="female">Perempuan</option>
+    </select>
+
+    <button onclick="calculateCalories()">Hitung</button>
+
+    <p id="result"></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+
+<div class="about">
+
+<div>
+<h3>FITCORE</h3>
+<p>
+FITCORE adalah platform workout modern yang membantu kamu membangun tubuh ideal tanpa gym.
+Fokus pada latihan simpel, konsisten, dan efektif.
+</p>
+
+<p>
+✔ Tanpa alat<br>
+✔ Cocok pemula<br>
+✔ Efektif
+</p>
+
+<div style="margin-top:15px;">
+<a href="https://instagram.com" target="_blank" class="social">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/6281216296524" target="_blank" class="social">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1">
+
+</div>
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 FITCORE</p>
+<p>Contact: 0812 1629 6524</p>
+</footer>
+
+<script>
+function calculateCalories(){
+  let weight = document.getElementById("weight").value;
+  let height = document.getElementById("height").value;
+  let age = document.getElementById("age").value;
+  let gender = document.getElementById("gender").value;
+
+  let bmr;
+
+  if(gender === "male"){
+    bmr = 10*weight + 6.25*height - 5*age + 5;
+  } else {
+    bmr = 10*weight + 6.25*height - 5*age - 161;
+  }
+
+  document.getElementById("result").innerText =
+    "Kebutuhan kalori harian: " + Math.round(bmr) + " kcal";
+}
+</script>
+
+</body>
+</html>
